@@ -13,7 +13,7 @@
 - - visit http://localhost:8000/
 - - navigate through the web app.
 - - each session is valid only 10 minutes, can be changed
-- - # [please do not use my credentials, use yours so that app could work]
+- - [please do not use my credentials, use yours so that app could work]
 
 ## Authors
 
