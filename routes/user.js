@@ -13,16 +13,17 @@ const {
   logout,
 } = require("../controllers/user_controllers");
 
+
+
 router.get("/", userHome);
 router.get("/login", loginController);
-router.post("/login", checkAuth, loginPostController);
+router.post("/login", checkAuth, loginPostController); // protected route
 router.get("/signup", registerController);
-router.post("/signup", checkAuth, registerPostController);
-router.post("/auth/google/signup", checkAuth, googleSignUp);
+router.post("/signup", checkAuth, registerPostController); // protected route
+router.post("/auth/google/signup", checkAuth, googleSignUp); // protected route
 router.get("/logout", logout);
-router.get("/profile", checkAuth, userProfile);
-router.get("/forgot-password/:token/reset", checkAuth, forgotPassword);
-router.post("/forgot-password/:token/reset", checkAuth, forgotPassword);
+router.get("/profile", checkAuth, userProfile); // protected route
+router.get("/forgot-password/:token/reset", checkAuth, forgotPassword); // protected route
 
 module.exports = router;
 

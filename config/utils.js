@@ -6,6 +6,7 @@ const User = require("../models/user");
 const MY_SECRET_KEY_SIGN = process.env.ENV_MY_SECRET_KEY_SIGN;
 const CLIENT_ID = process.env.ENV_CLIENT_ID;
 
+// verify google generated token
 async function verify(token) {
   const ticket = await client.verifyIdToken({
     idToken: token,
@@ -15,16 +16,19 @@ async function verify(token) {
   return payload;
 }
 
+// hash new password
 const hashPassword = async (password) => {
   const passHash = await bcrypt.hash(password, 10);
   return passHash;
 };
 
+// compare hash with user password
 const compareHash = async (pass, hash) => {
   const isMatch = await bcrypt.compare(pass, hash);
   return isMatch;
 };
 
+// create jwt token
 const createToken = (obj) => {
   const token = jwt.sign(obj, MY_SECRET_KEY_SIGN, {
     expiresIn: "600 seconds",
@@ -32,6 +36,7 @@ const createToken = (obj) => {
   return token;
 };
 
+// verify jwt token
 const verifyToken = (token) => {
   try {
     const obj = jwt.verify(token, MY_SECRET_KEY_SIGN);

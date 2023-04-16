@@ -1,3 +1,4 @@
+// importing all required modules
 require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
@@ -6,18 +7,22 @@ const app = express();
 app.use(cookieParser());
 const PORT = process.env.PORT || 8000;
 
-// importing database connection && initiliaze middlewares!
+// importing database connection && initialize express middlewares
 const connectDB = require("./db/database");
 connectDB();
+// setting templating engine as ejs
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+// getting json from front end in readable format
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// static files directory set
 app.use(express.static("static"));
 
-// import routers
+// import routers for complete app
 const homeRouter = require("./routes/home");
-
 app.use("/", homeRouter);
 
 app.listen(PORT, (err) => {
@@ -26,6 +31,7 @@ app.listen(PORT, (err) => {
   }
   console.log(`Server is listening at the port ${PORT}`);
 });
+
 
 /*
 Created By: Connect/Follow me on LinkedIn.

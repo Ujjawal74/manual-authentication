@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const userRouter = require("./user");
 const { checkAuth } = require("../config/utils");
-
 const {homeController, generateToken} = require("../controllers/home_controllers");
+
+
 router.use("/users", userRouter);
-router.get("/", checkAuth, homeController);
+router.get("/", checkAuth, homeController); // protected route
 router.post("/generate-token", generateToken);
 
 module.exports = router;
