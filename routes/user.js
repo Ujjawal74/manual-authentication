@@ -24,6 +24,7 @@ router.post("/auth/google/signup", checkAuth, googleSignUp); // protected route
 router.get("/logout", logout);
 router.get("/profile", checkAuth, userProfile); // protected route
 router.get("/forgot-password/:token/reset", checkAuth, forgotPassword); // protected route
+router.post("/forgot-password/:token/reset", checkAuth, forgotPassword); // protected route
 
 module.exports = router;
 
