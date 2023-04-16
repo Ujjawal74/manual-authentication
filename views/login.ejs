@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Toaster JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Login User</title>
+  </head>
+  <body>
+    <!-- <%- include("_header") %> -->
+    <%- include("_header") %>
+    <div class="container">
+      <div class="form">
+        <h2>Login To Dashboard</h2>
+        <input type="email" placeholder="Your Email" name="email" id="email" />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          id="password"
+        />
+        <div class="actions">
+          <button id="login-btn">Login</button>
+          <!-- <button>
+            <i class="fa-brands fa-google"></i> Sign In With Google
+          </button> -->
+          <div id="google-signin"></div>
+        </div>
+
+        <br />
+
+        <div id="reset-password">
+          <input
+            type="text"
+            placeholder="Enter your email"
+            name="email"
+            id="recovery_email"
+          />
+          <button id="sendLink" onclick="sendLink()">
+            Send Password Reset Link
+          </button>
+        </div>
+
+        <br />
+        <a href="javascript:void(0)" onclick="forgotPassWord()"
+          >Forgot Password?</a
+        >
+      </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script>
+      const resetBox = document.getElementById("reset-password");
+      const sendLinkBtn = document.getElementById("sendLink");
+      function forgotPassWord() {
+        resetBox.style.display = "block";
+      }
+
+      async function sendLink() {
+        try {
+          console.log("here");
+          const email = document.getElementById("recovery_email").value;
+          const res = await fetch("/generate-token", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          });
+          const data = await res.json();
+          console.log(data);
+          if (data.status == "ok") {
+            // send the email
+            window.location.href = `/users/forgot-password/${data.token}/reset`;
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Toaster JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Authencation System</title>
+  </head>
+  <body>
+    <%- include("_header") %>
+    <div class="container">
+      <div class="div">
+        <h2>Welcome <%= user ? user:"Guest" %> ⚡</h2>
+        <br />
+        <div class="actions">
+          <button id="<%= isLogged === true ? 'logout' : 'login' %>">
+            <%= isLogged === true ? "Logout" : "Login" %>
+          </button>
+          <a href="/users/signup"><button>Signup</button></a>
+          <!-- <div class="user"><i class="fa fa-user-circle"></i></div> -->
+        </div>
+
+        <br />
+        <hr />
+        <p>Note: Session is valid for 10 minutes only</p>
+      </div>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

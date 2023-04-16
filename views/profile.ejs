@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Toaster JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("_header") %>
+    <div class="profile">
+      <div>Name : <%= name %></div>
+      <br />
+      <div>Email : <%= email %></div>
+      <br />
+      <button id="change-password">Change Password</button>
+      <br />
+      <input type="hidden" id="token" value="<%= user_token %>" />
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script>
+      // Global Toaster Setting
+      toastr.options = {
+        closeButton: true,
+        newestOnTop: true,
+        progressBar: true,
+        positionClass: "toast-top-right",
+        timeOut: "2000",
+      };
+
+      const changePassBtn = document.getElementById("change-password");
+
+      changePassBtn.addEventListener("click", function () {
+        const token = document.getElementById("token").value;
+
+        if (token) {
+          window.location.href = `/users/forgot-password/${token}/reset`;
+        } else {
+          toastr.warning("Log In", "You are not logged in");
+        }
+        // console.log("clicked");
+      });
+    </script>
+  </body>
+</html>

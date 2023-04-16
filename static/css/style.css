@@ -1,0 +1,79 @@
+/*
+Created By: Connect/Follow me on LinkedIn.
+=> https://www.linkedin.com/in/ujjawal-biswas-b40611142/
+          _   _                         _  _      _                           
+  _   _  (_) (_)  __ _ __      __ __ _ | || |__  (_) ___ __      __ __ _  ___ 
+ | | | | | | | | / _` |\ \ /\ / // _` || || '_ \ | |/ __|\ \ /\ / // _` |/ __|
+ | |_| | | | | || (_| | \ V  V /| (_| || || |_) || |\__ \ \ V  V /| (_| |\__ \
+  \__,_|_/ |_/ | \__,_|  \_/\_/  \__,_||_||_.__/ |_||___/  \_/\_/  \__,_||___/
+       |__/|__/                                                                                                                                                                               
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.header {
+  padding: 5px;
+  background: #f3e8ff;
+  display: flex;
+  justify-content: center;
+}
+.header a {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  background: #c7e9b0;
+}
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.actions {
+  display: flex;
+}
+button {
+  margin: 0 2px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background: #c9f4aa;
+}
+
+/* Signup Page */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+input {
+  padding: 10px;
+  outline: none;
+  width: 30vw;
+  margin: 5px 0;
+  background: #eee;
+}
+input:focus {
+  border: 1px solid magenta;
+}
+
+#reset-password {
+  display: none;
+}

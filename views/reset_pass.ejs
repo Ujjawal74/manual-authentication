@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Password</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Toaster JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <input
+        type="password"
+        placeholder="New Password"
+        name="password"
+        id="password"
+      />
+      <button id="resetPassword">Reset Password</button>
+    </div>
+
+    <script>
+      // Global Toaster Setting
+      toastr.options = {
+        closeButton: true,
+        newestOnTop: true,
+        progressBar: true,
+        positionClass: "toast-top-right",
+        timeOut: "2000",
+      };
+
+      const resetPasswordBtn = document.getElementById("resetPassword");
+      resetPasswordBtn.addEventListener("click", async function () {
+        try {
+          const newPass = document.getElementById("password").value;
+          const res = await fetch(window.location.href, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ newPass }),
+          });
+          const data = await res.json();
+          console.log(data);
+          if (data.status == "ok") {
+            toastr.success("Redirecting", "Password Changed Successfully!");
+            setTimeout(() => {
+              window.location.replace("/");
+            }, 2000);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>

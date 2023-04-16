@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Toaster JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <title>Signup User</title>
+  </head>
+  <body>
+    <!-- <%- include("_header") %> -->
+    <%- include("_header") %>
+    <div class="container">
+      <div class="form">
+        <h2>Create New Account</h2>
+        <input type="text" placeholder="Your Name" name="name" id="name" />
+        <input type="email" placeholder="Your Email" name="email" id="email" />
+        <input
+          type="password"
+          placeholder="New password"
+          name="password"
+          id="password"
+        />
+        <div class="actions">
+          <button id="register-btn">Register</button>
+          <!-- <button>
+            <i class="fa-brands fa-google"></i> Sign Up With Google
+          </button> -->
+          <!-- <div
+            id="g_id_onload"
+            data-client_id="945771274748-lfdftfor3tagi4gjn4ldq6741b4jlmdc.apps.googleusercontent.com"
+            data-login_uri="/users/login"
+            data-auto_prompt="false"
+          ></div>
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="sign_in_with"
+            data-shape="rectangular"
+            data-logo_alignment="left"
+          ></div> -->
+
+          <div id="google-signin"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
